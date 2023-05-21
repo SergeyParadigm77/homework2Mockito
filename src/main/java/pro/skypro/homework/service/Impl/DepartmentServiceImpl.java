@@ -29,7 +29,7 @@ public class DepartmentServiceImpl implements DepartmentService {
     @Override
     public Employee ReturnEmployeeWithMinSalary(Integer departmentId) {
         Collection<Employee> employees = employeeService.getAllEmployees();
-        return employees.stream().filter(it -> it.getDepartment() == departmentId).min(Comparator.comparing(Employee::getSalary)).get();
+        return employees.stream().filter(it -> it.getDepartment() == departmentId).min(Comparator.comparing(Employee::getSalary)).orElse(null);
     }
 
     @Override
